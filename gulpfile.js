@@ -21,7 +21,7 @@ function scss() {
   return src("assets/scss/*.scss", { allowEmpty: true }) // Lấy tất cả file .scss trong assets/scss
     .pipe(plumber()) // Ngăn task dừng khi có lỗi
     .pipe(sass().on("error", sass.logError)) // Biên dịch SCSS thành CSS
-    .pipe(dest("assets/main/style")) // Xuất file CSS gốc (chưa nén)
+    .pipe(dest("assets/main/css")) // Xuất file CSS gốc (chưa nén)
     .pipe(cleanCSS()) // Nén file CSS
     .pipe(rename({ suffix: ".min" })) // Thêm hậu tố .min
     .pipe(dest("assets/main/css")) // Xuất file CSS đã nén
