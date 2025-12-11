@@ -5,10 +5,8 @@ const cleanCSS = require("gulp-clean-css");
 const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 
-// Production?
 const isProd = process.env.NODE_ENV === "production";
 
-// JS → chỉ nén + .min
 function js() {
   return src("assets/js/index/*.js", { allowEmpty: true })
     .pipe(uglify({ compress: { drop_console: isProd } }))
@@ -17,18 +15,16 @@ function js() {
     .pipe(browserSync.stream());
 }
 
-// SCSS → CSS thường + CSS.min (không autoprefixer)
 function css() {
   return src("assets/scss/*.scss", { allowEmpty: true })
     .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
-    .pipe(dest("assets/main/css")) // file CSS thường
-    .pipe(cleanCSS({ compatibility: "ie11" })) // nén mạnh
+    .pipe(dest("assets/main/css"))
+    .pipe(cleanCSS({ compatibility: "ie11" }))
     .pipe(rename({ suffix: ".min" }))
     .pipe(dest("assets/main/css"))
     .pipe(browserSync.stream());
 }
 
-// Server + Watch
 function serve() {
   browserSync.init({
     server: "./",
