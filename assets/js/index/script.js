@@ -1,4 +1,5 @@
 import { preloadImages } from "../../libs/utils.js";
+import { customDropdown } from "../../js/index/global.js";
 ("use strict");
 $ = jQuery;
 
@@ -12,6 +13,7 @@ gsap.ticker.lagSmoothing(0);
 
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
+  customDropdown();
 };
 preloadImages("img").then(() => {
   init();
