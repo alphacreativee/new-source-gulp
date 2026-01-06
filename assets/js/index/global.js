@@ -74,3 +74,31 @@ export function customDropdown() {
     });
   }
 }
+export function headerScroll() {
+  const header = document.getElementById("header");
+  if (!header) return null;
+
+  let lastScroll = 0;
+
+  const trigger = ScrollTrigger.create({
+    start: "top top",
+    end: 9999,
+    onUpdate: (self) => {
+      const currentScroll = self.scroll();
+
+      if (currentScroll <= 0) {
+        header.classList.remove("scrolled");
+      } else if (currentScroll > lastScroll) {
+        // Scroll down
+        header.classList.add("scrolled");
+      } else {
+        // Scroll up
+        header.classList.remove("scrolled");
+      }
+
+      lastScroll = currentScroll;
+    },
+  });
+
+  return trigger;
+}
