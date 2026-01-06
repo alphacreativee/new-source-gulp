@@ -1,5 +1,5 @@
 import { preloadImages } from "../../libs/utils.js";
-import { customDropdown } from "../../js/index/global.js";
+import { customDropdown } from "../../main/js/global.min.js";
 ("use strict");
 $ = jQuery;
 
