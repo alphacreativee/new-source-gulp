@@ -19,16 +19,21 @@ preloadImages("img").then(() => {
   init();
 });
 
+// event click element a
 let isLinkClicked = false;
-$("a").on("click", function (e) {
-  if (this.href && !this.href.match(/^#/) && !this.href.match(/^javascript:/)) {
+
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a");
+  if (
+    link?.href &&
+    !link.href.startsWith("#") &&
+    !link.href.startsWith("javascript:")
+  ) {
     isLinkClicked = true;
   }
 });
 
-$(window).on("beforeunload", function () {
-  if (!isLinkClicked) {
-    $(window).scrollTop(0);
-  }
+window.addEventListener("beforeunload", () => {
+  if (!isLinkClicked) window.scrollTo(0, 0);
   isLinkClicked = false;
 });
