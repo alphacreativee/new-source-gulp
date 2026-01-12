@@ -1,0 +1,22 @@
+:root {
+  // font
+  --font-heading: "", sans-serif;
+  --font-body: "", sans-serif;
+  // color
+  --color-black: #000000;
+  --color-white: #ffffff;
+  //
+}
+// font variable
+// color variable
+.color-black {
+  color: var(--color-black);
+}
+.color-white {
+  color: var(--color-white);
+}
+.limit-width {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
