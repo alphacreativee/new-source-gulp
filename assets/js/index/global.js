@@ -102,3 +102,58 @@ export function headerScroll() {
 
   return trigger;
 }
+
+export function createFilterTab() {
+  const filterSections = document.querySelectorAll(".filter-section");
+  if (!filterSections) return;
+  filterSections.forEach(function (filterSection) {
+    const resultContainer = filterSection.nextElementSibling;
+    if (
+      !resultContainer ||
+      !resultContainer.classList.contains("filter-section-result")
+    )
+      return;
+
+    const filterButtons = filterSection.querySelectorAll(
+      ".filter-button[data-type]"
+    );
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const filterType = this.dataset.type;
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        gsap.to(resultContainer, {
+          autoAlpha: 0,
+          duration: 0.5,
+          onComplete: () => {
+            const resultItems = resultContainer.querySelectorAll(
+              ".filter-item[data-filter]"
+            );
+            if (filterType === "all") {
+              resultItems.forEach((item) => (item.style.display = ""));
+            } else {
+              resultContainer
+                .querySelectorAll(".filter-item")
+                .forEach((item) => {
+                  item.style.display = "none";
+                });
+
+              resultContainer
+                .querySelectorAll(`.filter-item[data-filter='${filterType}']`)
+                .forEach((item) => {
+                  item.style.display = "";
+                });
+            }
+          },
+        });
+
+        gsap.to(resultContainer, {
+          autoAlpha: 1,
+          duration: 0.5,
+        });
+      });
+    });
+  });
+}

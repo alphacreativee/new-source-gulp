@@ -1,5 +1,5 @@
 import { preloadImages } from "../../main/js/utils.min.js";
-import { customDropdown } from "../../main/js/global.min.js";
+import { customDropdown, createFilterTab } from "../../main/js/global.min.js";
 ("use strict");
 $ = jQuery;
 
@@ -14,6 +14,7 @@ gsap.ticker.lagSmoothing(0);
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
+  createFilterTab();
 };
 preloadImages("img").then(() => {
   init();
