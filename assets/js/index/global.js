@@ -104,55 +104,32 @@ export function headerScroll() {
 }
 
 export function createFilterTab() {
-  const filterSections = document.querySelectorAll(".filter-section");
-  if (!filterSections) return;
-  filterSections.forEach(function (filterSection) {
-    const resultContainer = filterSection.nextElementSibling;
-    if (
-      !resultContainer ||
-      !resultContainer.classList.contains("filter-section-result")
-    )
-      return;
+  document.querySelectorAll(".filter-section").forEach((section) => {
+    const result = section.nextElementSibling;
+    if (!result?.classList.contains("filter-section-result")) return;
 
-    const filterButtons = filterSection.querySelectorAll(
-      ".filter-button[data-type]"
-    );
-
-    filterButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        const filterType = this.dataset.type;
-        filterButtons.forEach((btn) => btn.classList.remove("active"));
+    section.querySelectorAll(".filter-button[data-type]").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        // Update active state
+        section
+          .querySelectorAll(".filter-button")
+          .forEach((b) => b.classList.remove("active"));
         this.classList.add("active");
 
-        gsap.to(resultContainer, {
-          autoAlpha: 0,
-          duration: 0.5,
-          onComplete: () => {
-            const resultItems = resultContainer.querySelectorAll(
-              ".filter-item[data-filter]"
-            );
-            if (filterType === "all") {
-              resultItems.forEach((item) => (item.style.display = ""));
-            } else {
-              resultContainer
-                .querySelectorAll(".filter-item")
-                .forEach((item) => {
-                  item.style.display = "none";
-                });
+        const type = this.dataset.type;
+        const items = result.querySelectorAll(".filter-item");
 
-              resultContainer
-                .querySelectorAll(`.filter-item[data-filter='${filterType}']`)
-                .forEach((item) => {
-                  item.style.display = "";
-                });
-            }
-          },
-        });
-
-        gsap.to(resultContainer, {
-          autoAlpha: 1,
-          duration: 0.5,
-        });
+        // Animate fade out -> filter -> fade in
+        gsap
+          .timeline()
+          .to(result, { autoAlpha: 0, duration: 0.3 })
+          .call(() => {
+            items.forEach((item) => {
+              item.style.display =
+                type === "all" || item.dataset.filter === type ? "" : "none";
+            });
+          })
+          .to(result, { autoAlpha: 1, duration: 0.3 });
       });
     });
   });
