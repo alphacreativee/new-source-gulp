@@ -1,6 +1,6 @@
 export function customDropdown() {
   const dropdowns = document.querySelectorAll(
-    ".dropdown-custom, .dropdown-custom-select"
+    ".dropdown-custom, .dropdown-custom-select",
   );
 
   dropdowns.forEach((dropdown) => {
@@ -125,8 +125,14 @@ export function createFilterTab() {
           .to(result, { autoAlpha: 0, duration: 0.3 })
           .call(() => {
             items.forEach((item) => {
-              item.style.display =
-                type === "all" || item.dataset.filter === type ? "" : "none";
+              if (type === "all") {
+                item.style.display = "";
+              } else {
+                // Kiểm tra xem item có class tương ứng không
+                item.style.display = item.classList.contains(type)
+                  ? ""
+                  : "none";
+              }
             });
           })
           .to(result, { autoAlpha: 1, duration: 0.3 });
