@@ -105,8 +105,20 @@ export function headerScroll() {
 
 export function createFilterTab() {
   document.querySelectorAll(".filter-section").forEach((section) => {
-    const result = section.nextElementSibling;
-    if (!result?.classList.contains("filter-section-result")) return;
+    let result;
+
+    const targetSelector = section.dataset.target;
+    if (targetSelector) {
+      result = document.querySelector(targetSelector);
+    } else {
+      result = section.querySelector(".filter-section-result");
+      if (!result) {
+        result = section.nextElementSibling;
+        if (!result?.classList.contains("filter-section-result")) return;
+      }
+    }
+
+    if (!result) return;
 
     section.querySelectorAll(".filter-button[data-type]").forEach((btn) => {
       btn.addEventListener("click", function () {
@@ -128,7 +140,6 @@ export function createFilterTab() {
               if (type === "all") {
                 item.style.display = "";
               } else {
-                // Kiểm tra xem item có class tương ứng không
                 item.style.display = item.classList.contains(type)
                   ? ""
                   : "none";
