@@ -102,7 +102,7 @@ export function headerScroll() {
 
   return trigger;
 }
-// trường hợp k có tab all thì k cần tự active tab đầu tiên bên html
+
 export function createFilterTab() {
   document.querySelectorAll(".filter-section").forEach((section) => {
     let result;
@@ -122,15 +122,15 @@ export function createFilterTab() {
 
     const buttons = section.querySelectorAll(".filter-button[data-type]");
 
-    // Đảm bảo có ít nhất 1 button active khi load
-    if (!section.querySelector(".filter-button.active")) {
-      buttons[0]?.classList.add("active");
-
-      // Filter ngay khi load nếu button đầu tiên không phải "all"
-      const firstType = buttons[0]?.dataset.type;
-      if (firstType && firstType !== "all") {
+    // Chỉ cần check và filter lần đầu nếu có button active
+    const activeBtn = section.querySelector(".filter-button.active");
+    if (activeBtn) {
+      const activeType = activeBtn.dataset.type;
+      if (activeType !== "all") {
         result.querySelectorAll(".filter-item").forEach((item) => {
-          item.style.display = item.classList.contains(firstType) ? "" : "none";
+          item.style.display = item.classList.contains(activeType)
+            ? ""
+            : "none";
         });
       }
     }
