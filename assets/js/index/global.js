@@ -2,7 +2,7 @@ export function customDropdown() {
   const dropdowns = document.querySelectorAll(
     ".dropdown-custom, .dropdown-custom-select",
   );
-
+  if (!dropdowns.length) return;
   dropdowns.forEach((dropdown) => {
     const btnDropdown = dropdown.querySelector(".dropdown-custom-btn");
     const dropdownMenu = dropdown.querySelector(".dropdown-custom-menu");

@@ -1,4 +1,3 @@
-import { preloadImages } from "../../main/js/utils.min.js";
 import { customDropdown, createFilterTab } from "../../main/js/global.min.js";
 ("use strict");
 $ = jQuery;
@@ -16,7 +15,7 @@ const init = () => {
   customDropdown();
   createFilterTab();
 };
-preloadImages("img").then(() => {
+document.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
