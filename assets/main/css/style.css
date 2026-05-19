@@ -19,6 +19,38 @@
   margin: 0 auto;
 }
 
+@media (min-width: 992px) {
+  .limit-width-11-col {
+    max-width: 91.6666666667%;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-10-col {
+    max-width: 83.3333333333%;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-9-col {
+    max-width: 75%;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-8-col {
+    max-width: 66.6666666667%;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-7-col {
+    max-width: 58.3333333333%;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-6-col {
+    max-width: 50%;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
 *,
 *:before,
 *:after {

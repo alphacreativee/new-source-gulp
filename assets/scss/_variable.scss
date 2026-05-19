@@ -20,3 +20,35 @@
   width: 100%;
   margin: 0 auto;
 }
+@media (min-width: 992px) {
+  .limit-width-11-col {
+    max-width: calc(calc(11 / 12) * 100%);
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-10-col {
+    max-width: calc(calc(10 / 12) * 100%);
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-9-col {
+    max-width: calc(calc(9 / 12) * 100%);
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-8-col {
+    max-width: calc(calc(8 / 12) * 100%);
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-7-col {
+    max-width: calc(calc(7 / 12) * 100%);
+    width: 100%;
+    margin: 0 auto;
+  }
+  .limit-width-6-col {
+    max-width: calc(calc(6 / 12) * 100%);
+    width: 100%;
+    margin: 0 auto;
+  }
+}
