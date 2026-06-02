@@ -100,14 +100,11 @@ function initParallaxSwiper(swiperEl, options = {}) {
 }
 
 // cách dùng
-swiperLightbox = initParallaxSwiper(swiperEl, {
+const swiperEl = document.querySelector(".swiper-el");
+swiperParallax = initParallaxSwiper(swiperEl, {
   navigation: {
-    nextEl: lightbox.querySelector(".swiper-button-next"),
-    prevEl: lightbox.querySelector(".swiper-button-prev"),
-  },
-  pagination: {
-    el: lightbox.querySelector(".swiper-fraction"),
-    type: "fraction",
+    nextEl: document.querySelector(".swiper-button-next"),
+    prevEl: document.querySelector(".swiper-button-prev"),
   },
 });
 // ---------------code------------------------------------------------
