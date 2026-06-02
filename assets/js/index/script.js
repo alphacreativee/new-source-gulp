@@ -100,11 +100,12 @@ function initParallaxSwiper(swiperEl, options = {}) {
 }
 
 // cách dùng
-const swiperEl = document.querySelector(".swiper-el");
+const containerSwiperEl = document.querySelector(".container-swiper");
+const swiperEl = containerSwiperEl.querySelector(".swiper-el");
 swiperParallax = initParallaxSwiper(swiperEl, {
   navigation: {
-    nextEl: document.querySelector(".swiper-button-next"),
-    prevEl: document.querySelector(".swiper-button-prev"),
+    nextEl: containerSwiperEl.querySelector(".swiper-button-next"),
+    prevEl: containerSwiperEl.querySelector(".swiper-button-prev"),
   },
 });
 // ---------------code------------------------------------------------
