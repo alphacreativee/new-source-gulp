@@ -103,6 +103,7 @@ export function headerScroll() {
   return trigger;
 }
 
+/////// thêm class select-tab vào thì vẫn filter theo đúng type đó, không show hết item.
 export function createFilterTab() {
   document.querySelectorAll(".filter-section").forEach((section) => {
     let result;
@@ -119,10 +120,10 @@ export function createFilterTab() {
     }
 
     if (!result) return;
-
+    //check select tab
+    const isSelectTab = section.classList.contains("select-tab");
     const buttons = section.querySelectorAll(".filter-button[data-type]");
 
-    // Chỉ cần check và filter lần đầu nếu có button active
     const activeBtn = section.querySelector(".filter-button.active");
     if (activeBtn) {
       const activeType = activeBtn.dataset.type;
@@ -137,7 +138,6 @@ export function createFilterTab() {
 
     buttons.forEach((btn) => {
       btn.addEventListener("click", function () {
-        // Update active state
         section
           .querySelectorAll(".filter-button")
           .forEach((b) => b.classList.remove("active"));
@@ -146,13 +146,13 @@ export function createFilterTab() {
         const type = this.dataset.type;
         const items = result.querySelectorAll(".filter-item");
 
-        // Animate fade out -> filter -> fade in
         gsap
           .timeline()
           .to(result, { autoAlpha: 0, duration: 0.3 })
           .call(() => {
             items.forEach((item) => {
-              if (type === "all") {
+              // Nếu là select-tab thì không có trường hợp "all" → luôn filter theo type
+              if (!isSelectTab && type === "all") {
                 item.style.display = "";
               } else {
                 item.style.display = item.classList.contains(type)
