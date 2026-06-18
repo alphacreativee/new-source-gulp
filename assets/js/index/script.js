@@ -1,59 +1,17 @@
-import { customDropdown, createFilterTab } from "../../main/js/global.min.js";
-("use strict");
-$ = jQuery;
+"use strict";
+import {
+  customDropdown,
+  createFilterTab,
+  getDateLightPick,
+} from "../../main/js/global.min.js";
+
+const $ = jQuery;
 
 const lenis = new Lenis();
 lenis.on("scroll", ScrollTrigger.update);
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
-
+gsap.ticker.add((time) => lenis.raf(time * 1000));
 gsap.ticker.lagSmoothing(0);
 
-// $('input[name="date"]').daterangepicker(
-//   {
-//     opens: "left",
-//     autoApply: true,
-//     startDate: moment().startOf("hour"),
-//     endDate: moment().startOf("hour").add(24, "hour"),
-//     locale: {
-//       format: "DD/MM/YYYY",
-//       separator: " - ",
-//       applyLabel: "Áp dụng",
-//       cancelLabel: "Huỷ",
-//       fromLabel: "Từ",
-//       toLabel: "Đến",
-//       customRangeLabel: "Tuỳ chỉnh",
-//       weekLabel: "T",
-//       daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
-//       monthNames: [
-//         "Tháng 1",
-//         "Tháng 2",
-//         "Tháng 3",
-//         "Tháng 4",
-//         "Tháng 5",
-//         "Tháng 6",
-//         "Tháng 7",
-//         "Tháng 8",
-//         "Tháng 9",
-//         "Tháng 10",
-//         "Tháng 11",
-//         "Tháng 12",
-//       ],
-//       firstDay: 1,
-//     },
-//   },
-//   function (start, end) {
-//     $(this).val(start.format("DD/MM/YYYY") + " - " + end.format("DD/MM/YYYY"));
-//     console.log(
-//       "A new date selection was made: " +
-//         start.format("YYYY-MM-DD") +
-//         " to " +
-//         end.format("YYYY-MM-DD"),
-//     );
-//   },
-// );
-//---------------------initParallaxSwiper----------------------
 function initParallaxSwiper(swiperEl, options = {}) {
   const interleaveOffset = 0.8;
 
@@ -89,9 +47,7 @@ function initParallaxSwiper(swiperEl, options = {}) {
         swiper.slides.forEach((slide) => {
           slide.style.transition = `${speed}ms ${easing}`;
           const image = slide.querySelector(".image");
-          if (image) {
-            image.style.transition = `${speed}ms ${easing}`;
-          }
+          if (image) image.style.transition = `${speed}ms ${easing}`;
         });
       },
       ...(options.on || {}),
@@ -99,26 +55,33 @@ function initParallaxSwiper(swiperEl, options = {}) {
   });
 }
 
-// cách dùng
-const containerSwiperEl = document.querySelector(".container-swiper");
-const swiperEl = containerSwiperEl.querySelector(".swiper-el");
-swiperParallax = initParallaxSwiper(swiperEl, {
-  navigation: {
-    nextEl: containerSwiperEl.querySelector(".swiper-button-next"),
-    prevEl: containerSwiperEl.querySelector(".swiper-button-prev"),
-  },
-});
-// ---------------code------------------------------------------------
-const init = () => {
+function initSwiper() {
+  const containerSwiperEl = document.querySelector(".container-swiper");
+  if (!containerSwiperEl) return;
+
+  const swiperEl = containerSwiperEl.querySelector(".swiper-el");
+  if (!swiperEl) return;
+
+  const swiperParallax = initParallaxSwiper(swiperEl, {
+    navigation: {
+      nextEl: containerSwiperEl.querySelector(".swiper-button-next"),
+      prevEl: containerSwiperEl.querySelector(".swiper-button-prev"),
+    },
+  });
+}
+
+function init() {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   createFilterTab();
-};
+  getDateLightPick();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   init();
+  initSwiper();
 });
 
-// event click element a
 let isLinkClicked = false;
 
 document.addEventListener("click", (e) => {

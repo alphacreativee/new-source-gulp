@@ -166,3 +166,10 @@ export function createFilterTab() {
     });
   });
 }
+
+export function getDateLightPick() {
+  var picker = new Lightpick({
+    field: document.getElementById("datepicker"),
+    minDate: new Date(),
+  });
+}
