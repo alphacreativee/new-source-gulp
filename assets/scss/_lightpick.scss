@@ -25,19 +25,22 @@
     background-image: none;
     background-color: var(--color-active-is-today);
     color: var(--color-bg);
+    border-radius: none;
   }
   .lightpick__day:not(.is-disabled):hover {
     background-image: none;
     background-color: var(--color-active-is-today-opacity);
     color: var(--color-bg);
   }
-  .lightpick__month-title {
+  .lightpick__month-title,
+  .lightpick__month-title > .lightpick__select-months {
     margin-left: 0;
     padding-left: 0;
 
     border-radius: 0;
     direction: ltr;
     text-align: left;
+    width: max-content;
   }
   .lightpick__days-of-the-week {
     margin-bottom: 8px;
@@ -45,5 +48,10 @@
   }
   .lightpick__day.is-disabled {
     text-decoration: line-through;
+  }
+  .lightpick__days {
+    div {
+      background-color: var(--color-bg);
+    }
   }
 }

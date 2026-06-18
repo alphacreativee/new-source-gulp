@@ -171,5 +171,8 @@ export function getDateLightPick() {
   var picker = new Lightpick({
     field: document.getElementById("datepicker"),
     minDate: new Date(),
+    singleDate: false,
+    numberOfMonths: 2,
+    // lang: "en-US",
   });
 }
