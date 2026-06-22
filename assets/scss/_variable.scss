@@ -5,7 +5,32 @@
   // color
   --color-black: #000000;
   --color-white: #ffffff;
-  //
+  //spacing
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-80: 80px;
+}
+@media (max-width: 991px) {
+  :root {
+    // spacing mobile
+    --space-8: 8px;
+    --space-16: 8px;
+    --space-24: 16px;
+    --space-32: 24px;
+    --space-40: 32px;
+    --space-48: 40px;
+    --space-56: 48px;
+    --space-64: 56px;
+    --space-72: 64px;
+    --space-80: 72px;
+  }
 }
 // font variable
 // color variable
@@ -20,33 +45,33 @@
   width: 100%;
   margin: 0 auto;
 }
-@media (min-width: 992px) {
-  .limit-width-11-col {
+@media (min-width: 1024px) {
+  .limit-11-col {
     max-width: calc(calc(11 / 12) * 100%);
     width: 100%;
     margin: 0 auto;
   }
-  .limit-width-10-col {
+  .limit-10-col {
     max-width: calc(calc(10 / 12) * 100%);
     width: 100%;
     margin: 0 auto;
   }
-  .limit-width-9-col {
+  .limit-9-col {
     max-width: calc(calc(9 / 12) * 100%);
     width: 100%;
     margin: 0 auto;
   }
-  .limit-width-8-col {
+  .limit-8-col {
     max-width: calc(calc(8 / 12) * 100%);
     width: 100%;
     margin: 0 auto;
   }
-  .limit-width-7-col {
+  .limit-7-col {
     max-width: calc(calc(7 / 12) * 100%);
     width: 100%;
     margin: 0 auto;
   }
-  .limit-width-6-col {
+  .limit-6-col {
     max-width: calc(calc(6 / 12) * 100%);
     width: 100%;
     margin: 0 auto;
