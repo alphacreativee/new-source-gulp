@@ -16,6 +16,7 @@
   --space-64: 64px;
   --space-72: 72px;
   --space-80: 80px;
+  --spacing-padding: 120px 40px;
 }
 @media (max-width: 991px) {
   :root {
@@ -30,6 +31,7 @@
     --space-64: 56px;
     --space-72: 64px;
     --space-80: 72px;
+    --spacing-padding: 64px 16px;
   }
 }
 // font variable
