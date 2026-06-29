@@ -13,7 +13,7 @@ gsap.ticker.add((time) => lenis.raf(time * 1000));
 gsap.ticker.lagSmoothing(0);
 
 function initParallaxSwiper(swiperEl, options = {}) {
-  const interleaveOffset = 0.8;
+  const interleaveOffset = 0.85;
 
   return new Swiper(swiperEl, {
     slidesPerView: 1,
@@ -59,7 +59,7 @@ function initSwiper() {
   const containerSwiperEl = document.querySelector(".container-swiper");
   if (!containerSwiperEl) return;
 
-  const swiperEl = containerSwiperEl.querySelector(".swiper-el");
+  const swiperEl = containerSwiperEl.querySelector(".swiper-el-parallax");
   if (!swiperEl) return;
 
   const swiperParallax = initParallaxSwiper(swiperEl, {
